@@ -24,11 +24,25 @@ public class Solution {
         isStopped = true;
     }
 
-    public static class Apteka {
+    public static class Apteka implements Runnable{
+        public void run() {
+            while (!isStopped) {
+                drugsController.sell(getRandomDrug(), getRandomCount());
+                waitAMoment(); // без этого уходит в бесконечный цикл
+                waitAMoment(); // без этого уходит в бесконечный цикл
+                waitAMoment(); // без этого уходит в бесконечный цикл
+            }
+        }
 
     }
 
-    public static class Person {
+    public static class Person implements Runnable{
+        public void run() {
+            while (!isStopped) {
+                drugsController.buy(getRandomDrug(), getRandomCount());
+                waitAMoment(); // --- // ---
+            }
+        }
 
     }
 
