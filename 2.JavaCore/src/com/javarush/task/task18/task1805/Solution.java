@@ -26,9 +26,10 @@ public class Solution {
                     bufferSize = fileInputStream.available();
                 }
                 fileInputStream.read(buffer, 0, bufferSize);
+                for (int i = 0; i < bufferSize; i++)
+                    arrByte[buffer[i] & 0b11111111]++;
             }
-            for (int i = 0; i < bufferSize; i++)
-                arrByte[buffer[i]]++;
+
 
             for (int i = 0; i < arrByte.length; i++) {
                 if (arrByte[i] > 0) System.out.print(i + " ");
