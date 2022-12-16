@@ -15,7 +15,19 @@ public class Solution {
         String src = bufferedReader.readLine();
         String dst = bufferedReader.readLine();
 
-        
+        try(FileInputStream fileIn = new FileInputStream(src);
+            FileOutputStream fileOut = new FileOutputStream(dst)){
+
+            byte [] buffer = new byte[fileIn.available()];
+            fileIn.read(buffer);
+
+            for (int i = buffer.length-1; i >=0 ; i--) {
+                fileOut.write(buffer[i]);
+            }
+
+
+
+        }
 
 
     }
