@@ -9,7 +9,12 @@ UnsupportedFileName
 
 public class TxtInputStream extends FileInputStream {
 
-    public TxtInputStream(String fileName) {
+    public TxtInputStream(String fileName) throws UnsupportedFileNameException, IOException {
+        super(fileName);
+        if(!fileName.matches("^.+\\.txt$")){
+            super.close();
+            throw new UnsupportedFileNameException();
+        }
     }
 
     public static void main(String[] args) {
