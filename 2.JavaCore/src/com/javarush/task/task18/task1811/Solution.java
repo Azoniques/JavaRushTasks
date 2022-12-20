@@ -10,6 +10,20 @@ public class Solution {
         new Thread(new DecoratorRunnableImpl(new DecoratorMyRunnableImpl(new RunnableImpl()))).start();
     }
 
+    public static class DecoratorMyRunnableImpl implements Runnable{
+        private Runnable comp;
+
+        public DecoratorMyRunnableImpl(Runnable comp){
+            this.comp = comp;
+        }
+
+        @Override
+        public void run() {
+            System.out.println(("DecoratorMyRunnableImpl body"));
+            comp.run();
+        }
+    }
+
     public static class RunnableImpl implements Runnable {
         @Override
         public void run() {
