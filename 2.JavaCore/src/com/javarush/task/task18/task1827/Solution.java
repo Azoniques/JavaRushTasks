@@ -35,12 +35,17 @@ public class Solution {
     }
 
     public static void main(String[] args) throws Exception {
+
+// ------Тестовый ввод параметров запуска
+        args = "-c productName FOO BAR 1 1".split(" ");
+
         if (args.length == 0) {
             return;
         }
-
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String fileName = bufferedReader.readLine();
+// ----Тестовый адрес вместо ввода в консоль
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        String fileName = bufferedReader.readLine();
+        String fileName = "D:\\test.txt";
 
         List<Product> products = new ArrayList<>();
 
@@ -63,7 +68,7 @@ public class Solution {
                     name += args[i] + " ";
                 }
                 if (name.length() > 30) {
-                    name.substring(0, 30);
+                    name = name.substring(0, 30);
                 }
                 String price = args[args.length - 2];
                 if (price.length() > 8) {
@@ -73,7 +78,7 @@ public class Solution {
                 if (quantity.length() > 4) {
                     quantity = quantity.substring(0, 4);
                 }
-                Product product = new Product(++id, name.trim(), price.trim(), quantity.trim());
+                Product product = new Product(++id, name.trim(), price, quantity);
 
                 try (FileWriter fileWriter = new FileWriter(fileName, true)) {
                     fileWriter.write("\n");
