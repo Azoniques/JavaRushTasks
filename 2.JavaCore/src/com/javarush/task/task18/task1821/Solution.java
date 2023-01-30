@@ -12,20 +12,21 @@ import java.io.IOException;
 public class Solution {
     public static void main(String[] args) throws IOException {
 //        args[0] = "D:\\test2.txt";
-        FileInputStream fileInputStream = new FileInputStream(args[0]);
+        try (FileInputStream fileInputStream = new FileInputStream(args[0])) {
 
-        int[] array = new int[256];
-            while(fileInputStream.available()>0){
+            int[] array = new int[256];
+            while (fileInputStream.available() > 0) {
                 int i = fileInputStream.read();
-                array[i] ++;
+                array[i]++;
             }
-        for (int i = 0; i < array.length; i++) {
-            if(array[i] !=0){
-                System.out.println((char) i+ " "+ array[i]);
-            }
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != 0) {
+                    System.out.println((char) i + " " + array[i]);
+                }
 
 
-        }
+            }
 //        System.out.println(array);
+        }
     }
 }
