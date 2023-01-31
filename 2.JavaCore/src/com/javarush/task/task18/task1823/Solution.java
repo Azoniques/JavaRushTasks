@@ -44,6 +44,10 @@ public class Solution {
                 }
             }
             resultMap.put(fileName, targetByte);
+            for(Map.Entry entry : resultMap.entrySet()){
+                System.out.println("Key: "+ entry.getKey() + "| Value: " + entry.getValue());
+            }
+
         }
     }
 }
