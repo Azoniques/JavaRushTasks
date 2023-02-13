@@ -17,7 +17,17 @@ public class Solution {
         }
         ArrayList<String> content = new ArrayList<>();
 
-        try(BufferedReader reader )
+        try(BufferedReader reader = new BufferedReader(new FileReader(inputFile))){
+            while (reader.ready()){
+                content.add(reader.readLine());
+            }
+        }
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))){
+            for (String s : content){
+                writer.write(s.replaceAll("\\p{Punct}", ""));
+            }
+        }
 
 
 
