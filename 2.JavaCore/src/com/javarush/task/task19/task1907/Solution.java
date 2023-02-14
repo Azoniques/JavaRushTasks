@@ -10,6 +10,25 @@ import java.io.InputStreamReader;
 */
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String file;
+        try(BufferedReader console = new BufferedReader(new InputStreamReader(System.in))){
+            file = console.readLine();
+        }
+        try(BufferedReader fileReader = new BufferedReader(new FileReader(file))){
+            int count = 0;
+            while(fileReader.ready()){
+                String [] s = fileReader.readLine().split("[^\\w]");
+                for (String word : s){
+                    if ("world".equals(word)){
+                        count++;
+                    }
+                }
+            }
+            System.out.println(count);
+        }
+
+
+
     }
 }
