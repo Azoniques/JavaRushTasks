@@ -9,7 +9,31 @@ import java.io.*;
 public class Solution {
     public static TestString testString = new TestString();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String fileName;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = bufferedReader.readLine();
+        }
+
+        PrintStream out = System.out;
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        testString.printSomething();
+
+        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+        fileOutputStream.write(byteArrayOutputStream.toByteArray());
+        fileOutputStream.close();
+        System.setOut(out);
+        System.out.println(byteArrayOutputStream);
+
+
+
+
+
+
     }
 
     public static class TestString {
