@@ -11,6 +11,18 @@ public class Solution {
     public static TestString testString = new TestString();
 
     public static void main(String[] args) {
+        PrintStream defaultOut = System.out;
+        ByteArrayOutputStream ba = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(ba);
+        System.setOut(ps);
+        testString.printSomething();
+        String result = ba.toString().replaceAll("te", "??");
+        System.setOut(defaultOut);
+        System.out.println(result);
+
+
+
+
     }
 
     public static class TestString {
