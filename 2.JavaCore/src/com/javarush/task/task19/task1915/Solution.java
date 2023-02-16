@@ -24,8 +24,7 @@ public class Solution {
         testString.printSomething();
 
         FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-        fileOutputStream.write(byteArrayOutputStream.toByteArray());
-        fileOutputStream.close();
+        byteArrayOutputStream.writeTo(fileOutputStream);
         System.setOut(out);
         System.out.println(byteArrayOutputStream);
 
