@@ -11,6 +11,25 @@ public class Solution {
     public static TestString testString = new TestString();
 
     public static void main(String[] args) {
+        PrintStream defaultPrintStream = System.out;
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        testString.printSomething();
+
+        System.setOut(defaultPrintStream);
+
+        String[] strings = byteArrayOutputStream.toString().split("\\n");
+        for (int i = 0; i < strings.length; i++) {
+            System.out.println(strings[i]);
+            if (i % 2 != 0)
+                System.out.println("JavaRush - курсы Java онлайн");
+
+        }
+
+
     }
 
     public static class TestString {
