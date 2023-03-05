@@ -13,7 +13,8 @@ public class Solution {
     public static void main(String[] args) {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
-            File your_file_name = File.createTempFile("your_file_name", null);
+//            File your_file_name = File.createTempFile("your_file_name", null);
+            String your_file_name = "D:\\Test1.txt";
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -68,11 +69,25 @@ public class Solution {
         }
 
         public void save(OutputStream outputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            try (PrintWriter pw = new PrintWriter(outputStream)) {
+                pw.println(this.name);
+                if (this.assets.size()>0){
+                for (Asset a : this.assets) {
+                    pw.println(a.getName());
+                    pw.println(a.getPrice());
+                }
+                }
+            }
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                this.name = br.readLine();
+                while (br.ready()){
+                    this.assets.add(new Asset(br.readLine(),
+                    Double.parseDouble(br.readLine())));
+                }
+            }
         }
     }
 }
