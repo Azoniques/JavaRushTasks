@@ -1,4 +1,4 @@
-package test;
+package test.multithreading.concurrency.executors.firsttest;
 
 import static java.lang.String.format;
 

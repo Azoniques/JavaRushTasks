@@ -1,4 +1,4 @@
-package test;
+package test.multithreading.concurrency.executors.firsttest;
 
 public class Counter {
     public Double count(double a) {
