@@ -12,13 +12,13 @@ public class Solution {
         Solution solution = new Solution();
 
         Instant start = Instant.now();
-        System.out.println(solution.fibonacci(50));//34
+        System.out.println(solution.fibonacci(45));//34
         Instant finish = Instant.now();
         /*System.out.println(solution.fibonacci(5));     //5
 
         System.out.println(solution.fibonacci(2));     //1
         System.out.println(solution.fibonacci(1));     //1*/
-        long elapsed = Duration.between(start, finish).toMillis();
+        long elapsed = Duration.between(start, finish).toMillisPart();
         System.out.println("calculating time: " + elapsed);
     }
 
