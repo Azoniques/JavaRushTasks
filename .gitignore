@@ -28,5 +28,6 @@ target/
 /JavaRushPlugin.properties
 /Instruction.png
 /out.log
+/all.log
 /out.log.*
 /4.JavaCollections/src/test/
