@@ -2,6 +2,7 @@ package com.javarush.task.task34.task3412;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.log4j.PropertyConfigurator;
 
 import java.util.Date;
 
@@ -24,6 +25,19 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+
+
+        System.out.println("\nLOG STARTED");
+        System.out.println("=====================");
+        Solution solution = new Solution(85, "Bulat", new Date());
+        solution.calculateAndSetValue3(5555L);
+        solution.printString();
+        solution.printDateAsLong();
+        solution.divide(10, 5);
+        solution.divide(10, 0);
+        solution.setValue1(666);
+        solution.setValue2("Kekeke");
+        solution.setValue3(new Date());
 
     }
 
@@ -58,7 +72,7 @@ public class Solution {
         try {
             System.out.println(number1 / number2);
         } catch (ArithmeticException e) {
-            logger.error("ArithmeticException: number1 = " + number1 + ", number2 = " + number2, e);
+            logger.error("$ArithmeticException: number1 = " + number1 + ", number2 = " + number2, e);
         }
     }
 
