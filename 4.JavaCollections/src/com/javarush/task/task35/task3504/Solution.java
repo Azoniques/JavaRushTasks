@@ -30,6 +30,6 @@ public class Solution <T extends HashMap>{
         hashMap2.put(solution, solution);
         Solution<LinkedHashMap> solution2 = new Solution<LinkedHashMap>(hashMap2);
         LinkedHashMap mapFromSolution2 = solution2.getMap();   //need to cast  :(
-        System.out.println(mapFromSolution2.getClass());
+        System.out.println(mapFromSolution2.getClass()) ;
     }
 }
