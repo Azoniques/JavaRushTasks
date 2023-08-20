@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Solution {
     public static void main(String[] args) {
-        long elementsNumber = 10000;
+        long elementsNumber = 20000;
 
         testStrategy(new HashMapStorageStrategy(), elementsNumber);
 
@@ -17,6 +17,9 @@ public class Solution {
         testStrategy(new OurHashMapStorageStrategy(), elementsNumber);
 
         testStrategy(new HashBiMapStorageStrategy(), elementsNumber);
+
+        testStrategy(new DualHashBidiMapStorageStrategy(), elementsNumber);
+
 
 //        testStrategy(new FileStorageStrategy(), elementsNumber);
     }
