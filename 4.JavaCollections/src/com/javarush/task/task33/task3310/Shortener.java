@@ -10,17 +10,17 @@ public class Shortener {
         this.storageStrategy = storageStrategy;
     }
 
-    public synchronized String getString(Long id){
-        return storageStrategy.getValue(id);
-    }
-
-    public synchronized Long getId(String string){
-        if(storageStrategy.containsValue(string))
+    public synchronized Long getId(String string) {
+        if (storageStrategy.containsValue(string))
             return storageStrategy.getKey(string);
 
-        lastId ++;
+        lastId++;
         storageStrategy.put(lastId, string);
         return lastId;
+    }
 
+    public synchronized String getString(Long id) {
+        return storageStrategy.getValue(id);
     }
 }
+
