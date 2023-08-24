@@ -15,7 +15,7 @@ import java.util.*;
 
 public class LogParser implements IPQuery{
     private Path logDir;
-    private DateFormat simpleDateFormat = new SimpleDateFormat("dd.mm.yyyy H:m:s");
+    private DateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy H:m:s");
     private List<LogEntity> logEntities = new ArrayList<>();
     public LogParser(Path logDir) {
         this.logDir = logDir;
@@ -143,17 +143,41 @@ public class LogParser implements IPQuery{
 
     @Override
     public Set<String> getIPsForUser(String user, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for(int i = 0; i< logEntities.size(); i++){
+            if(dateBetweenDates(logEntities.get(i).getDate(), after, before)){
+                if(logEntities.get(i).getUser().equals(user)){
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
 
     @Override
     public Set<String> getIPsForEvent(Event event, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for(int i = 0; i< logEntities.size(); i++){
+            if(dateBetweenDates(logEntities.get(i).getDate(), after, before)){
+                if(logEntities.get(i).getEvent().equals(event)){
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
 
     @Override
     public Set<String> getIPsForStatus(Status status, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for(int i = 0; i< logEntities.size(); i++){
+            if(dateBetweenDates(logEntities.get(i).getDate(), after, before)){
+                if(logEntities.get(i).getStatus().equals(status)){
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
     private class LogEntity{
         private String ip;
